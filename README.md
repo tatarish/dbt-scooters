@@ -1,15 +1,21 @@
-Welcome to your new dbt project!
+dbt_scooters
+dbt_scooters — проект аналитической трансформации данных для сервиса аренды электросамокатов с использованием dbt. Проект включает модели для расчёта ключевых метрик, построения витрин и автоматизации процессов аналитики.
 
-### Using the starter project
+Быстрый старт
+Клонируйте репозиторий и перейдите в папку проекта
 
-Try running the following commands:
-- dbt run
-- dbt test
+git clone https://github.com/tatarish/dbt-scooters
+cd dbt_scooters
+Настройте соединение с вашей БД в profiles.yml
 
+Установите зависимости
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+dbt deps
+Выполните базовые dbt-команды:
+
+| Действие | Команда | |-------------------------|--------------------------| | Проверить соединение | dbt debug | | Собрать все модели | dbt run | | Выполнить тесты | dbt test | | Сгенерировать документы | dbt docs generate | | Открыть документацию | dbt docs serve | | Пересобрать модель | dbt run --select <model_name> |
+
+Структура проекта
+models/ — sql-модели трансформаций
+tests/ — пользовательские тесты
+snapshots/ — снимки данных для анализа изменений
