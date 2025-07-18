@@ -19,3 +19,9 @@ dbt deps
 models/ — sql-модели трансформаций
 tests/ — пользовательские тесты
 snapshots/ — снимки данных для анализа изменений
+
+4. Активируйте PostGIS в базе PostgreSQL, если еще этого не делали:
+
+```sql
+create extension postgis schema public;
+```
