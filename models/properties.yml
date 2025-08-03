@@ -25,8 +25,8 @@ sources:
               - accepted_values:
                   values: [ "M", "F" ]
               - not_null:
-                config:
-                    severity: "warn"
+                  config:
+                    severity: "warn"                   
       - name: "events"
         description: "Raw user events with duplicates"
 
@@ -44,6 +44,9 @@ models:
         - columns: ["date"]
   - name: "trips_age_daily"
     description: "Daily trips statistics by user age"
+    data_tests:
+      - unique:
+          column_name: "date::text || age::text"
 
   - name: "trips_age_daily_stat"
     description: "Aggregation of daily trips statistics by user age"
@@ -85,6 +88,11 @@ models:
 
   - name: "companies_trips"
     description: "Trip satistics by company"
+    columns:
+      - name: "company"
+        description: "Scooters manufacturing company"
+        data_tests:
+          - unique
 
   - name: "events_full"
     description: "User events enriched with meaningful types"
