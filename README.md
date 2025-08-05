@@ -42,3 +42,23 @@ create extension postgis schema public;
 - `dbt source freshness` - проверка актуальности данных в источниках
 - `dbt docs generate` - генерирует документацию проекта
 - `dbt docs serve` - запускает локальный сервер для просмотра документации
+
+## desc
+select
+    ns.nspname as schema_name,
+    cls.relname as table_name,
+    des.description as table_description,
+    cls.relkind = 'r' as is_table
+from
+    pg_catalog.pg_class cls
+    join pg_catalog.pg_namespace ns
+      on ns.oid = cls.relnamespace
+    left join pg_catalog.pg_description des
+      on des.objoid = cls.oid
+      and des.objsubid = 0
+where
+    ns.nspname in ('dbt', 'finance')
+    and cls.relkind in ('r', 'v') -- only tables and views
+order by
+    1,
+    2;
