@@ -6,4 +6,4 @@ select
     count(is_free or null) / cast(count(*) as real) * 100 as free_trips_pct,
     sum(distance_m) / 1000 as sum_distance_km
 from
-     {{ ref("trips_prep") }}
+    {{ ref("trips_prep") }}
